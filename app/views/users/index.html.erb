@@ -3,19 +3,28 @@
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
 
-  <% content_for :title, "Users" %>
-
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Users</h1>
-    <%= link_to "New user", new_user_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
-  </div>
-
-  <div id="users" class="min-w-full">
+<div class="flex justify-between items-center mb-6">
+  <h1 class="font-bold text-3xl">All Users</h1>
+  <%= link_to "New user", new_user_path, class: "rounded-lg py-1 px-4 bg-blue-600 text-white block font-medium" %>
+</div>
+<table class="table-auto w-full text-sm">
+  <thead>
+    <tr>
+      <th class="border-b dark-border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">Name</th>
+      <th class="border-b dark-border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">Email</th>
+      <th class="border-b dark-border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">Login</th>
+      <th class="border-b dark-border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">View</th>
+    </tr>
+  </thead>
+  <tbody>
     <% @users.each do |user| %>
-      <%= render user %>
-      <p>
-        <%= link_to "Show this user", user, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-      </p>
+      <tr>
+        <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400"><%= user.name %></td>
+        <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400"><%= user.email %></td>
+        <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400"><%= user.login %></td>
+        <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400"><%= link_to "Show this user", user %></td>
+      </tr>
     <% end %>
-  </div>
+  </tbody>
+</table>
 </div>
